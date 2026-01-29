@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<robot name="franklin_street_hockey_stick">
+
+  <material name="SilverWrap">
+    <color rgba="0.7 0.7 0.75 1.0"/>
+  </material>
+
+  <material name="BlackPlastic">
+    <color rgba="0.1 0.1 0.1 1.0"/>
+  </material>
+
+  <material name="OrangeLogo">
+    <color rgba="1.0 0.5 0.0 1.0"/>
+  </material>
+
+  <link name="shaft_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.85" radius="0.0127"/>
+      </geometry>
+      <material name="SilverWrap"/>
+    </visual>
+    
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.85" radius="0.0127"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.3"/>
+      <inertia ixx="0.01807" ixy="0.0" ixz="0.0" 
+               iyy="0.01807" iyz="0.0" 
+               izz="0.000024"/>
+    </inertial>
+  </link>
+
+  <link name="blade_link">
+    <visual>
+      <origin xyz="0.10 0 0" rpy="0 0 0"/> 
+      <geometry>
+        <box size="0.22 0.015 0.06"/> 
+      </geometry>
+      <material name="BlackPlastic"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0.10 0 0" rpy="0 0 0"/>
+      <geometry>
+         <box size="0.22 0.015 0.06"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.15"/>
+      <inertia ixx="0.000048" ixy="0.0" ixz="0.0" 
+               iyy="0.00065" iyz="0.0" 
+               izz="0.00061"/>
+    </inertial>
+  </link>
+
+  <joint name="shaft_to_blade_joint" type="fixed">
+    <parent link="shaft_link"/>
+    <child link="blade_link"/>
+    <origin xyz="0 0 -0.425" rpy="0 0.65 0"/>
+  </joint>
+
+  <link name="graphic_band">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.3" radius="0.0128"/> </geometry>
+      <material name="OrangeLogo"/>
+    </visual>
+  </link>
+
+  <joint name="shaft_graphic_joint" type="fixed">
+    <parent link="shaft_link"/>
+    <child link="graphic_band"/>
+    <origin xyz="0 0 0.1" rpy="0 0 0"/>
+  </joint>
+
+</robot>

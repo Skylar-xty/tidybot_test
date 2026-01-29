@@ -1,0 +1,7 @@
+output/**
+scripts/RDF/.git/
+scripts/RDF/*.git
+scripts/RDF_TB/mesh_env
+*.pyc
+scripts/__pycache__/
+*.csv
